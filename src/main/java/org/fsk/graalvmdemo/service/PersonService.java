@@ -3,6 +3,7 @@ package org.fsk.graalvmdemo.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.fsk.graalvmdemo.cfg.MeasureTime;
 import org.fsk.graalvmdemo.models.Person;
 import org.fsk.graalvmdemo.repository.PersonRepository;
 import org.springframework.core.io.ClassPathResource;
@@ -28,6 +29,7 @@ public class PersonService {
 //        }
 //    }
 
+    @MeasureTime
     public List<Person> findAllPersonSearchNameContains(String param) {
 
         List<Person> personList = personRepository
