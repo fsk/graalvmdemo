@@ -34,3 +34,35 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+graalvmNative {
+    binaries {
+        main {
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of("21")
+                vendor = JvmVendorSpec.matching("GraalVM Community")
+            }
+        }
+    }
+    binaries.configureEach {
+        resources.autodetect()
+        buildArgs.addAll([
+                '--no-fallback',
+                '--enable-all-security-services',
+        ])
+    }
+
+    toolchainDetection = false
+}
+
+bootBuildImage {
+    // paketobuildpacks/builder:0.3.288-base
+    // paketobuildpacks/builder:0.1.390-tiny
+    // paketobuildpacks/builder:0.1.374-tiny
+    //builder = 'paketobuildpacks/builder:0.1.374-tiny'
+    environment = [
+            "JAVA_TOOL_OPTIONS":"-Xmx16384M",
+            'BP_NATIVE_IMAGE': 'true'
+    ]
+
+}

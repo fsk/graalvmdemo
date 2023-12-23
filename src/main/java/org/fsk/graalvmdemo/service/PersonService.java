@@ -19,14 +19,14 @@ public class PersonService {
     private final PersonRepository personRepository;
 
 
-    public void loadJsonData() throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        for (int i = 0; i < 1000; i++) {
-        File file = new ClassPathResource("demo.json").getFile();
-        List<Person> persons = mapper.readValue(file, new TypeReference<>() {});
-            personRepository.saveAll(persons);
-        }
-    }
+//    public void loadJsonData() throws Exception {
+//        ObjectMapper mapper = new ObjectMapper();
+//        for (int i = 0; i < 1000; i++) {
+//        File file = new ClassPathResource("demo.json").getFile();
+//        List<Person> persons = mapper.readValue(file, new TypeReference<>() {});
+//            personRepository.saveAll(persons);
+//        }
+//    }
 
     public List<Person> findAllPersonSearchNameContains(String param) {
 

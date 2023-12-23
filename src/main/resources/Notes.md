@@ -1,0 +1,1 @@
+./gradlew bootBuildImage --imageName=graalvmdemo:v001

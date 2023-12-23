@@ -1,1 +1,33 @@
+#SERVER-CFG
+server:
+  port: 8282
 
+#MONGO-CFG
+spring:
+  data:
+    mongodb:
+      host: 192.168.1.4
+      port: 1905
+      database: graalvm-demo-mongodb
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
