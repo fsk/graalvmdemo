@@ -35,11 +35,10 @@ public class PersonService {
         List<Person> personList = personRepository
                 .findAll();
 
-        List<Person> resultList = personList
+        return personList
                 .stream()
                 .filter(item -> item.getFirstName().contains(param))
                 .toList();
 
-        return resultList;
     }
 }
